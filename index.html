@@ -33,5 +33,11 @@
             window.parent.postMessage({ type: 'TITLE', title }, 'https://baijc.cn');
         }
     </script>
+    <script>
+        document.getElementById('myIframe').addEventListener('load', function() {
+            var iframeHeight = this.contentWindow.document.body.scrollHeight;
+            this.style.height = iframeHeight + 'px';
+        });
+    </script>
 </body>
 </html>
