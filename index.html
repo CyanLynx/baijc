@@ -1,12 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <title></title>
     <script>
-        window.onload = function() {
-            window.location.replace('https://baijc.com');
-        };
+        document.addEventListener('DOMContentLoaded', function() {
+            window.addEventListener('message', function(event) {
+                document.title = event.data.title;
+            });
+        });
     </script>
 </head>
 <body>
+    <iframe src="https://example.com" id="myIframe" onload="postTitleToParent(this.contentWindow)">
+        Your browser does not support iframes.
+    </iframe>
+    <script>
+        function postTitleToParent(window) {
+            const title = window.document.getElementsByTagName('title')[0].innerText;
+            window.parent.postMessage({ type: 'TITLE', title }, 'https://example.com');
+        }
+    </script>
 </body>
 </html>
