@@ -21,9 +21,18 @@
     </style>
     <script type="text/javascript">
         window.onload = function () {
-            var iframeEle = document.getElementsByTagName("iframe");
-            document.title = iframeEle.contentWindow.document.title;
-        }
+            var iframeEle = document.getElementsByTagName("iframe")[0]; 
+            if (iframeEle) {
+                iframeEle.onload = function () {
+                    try {
+                        var iframeTitle = iframeEle.contentWindow.document.title;
+                        document.title = iframeTitle;
+                    } catch (e) {
+                        console.error("无法获取iframe中的标题，可能是因为跨域限制。", e);
+                    }
+                };
+            }
+        };
     </script>
 </head>
 <body>
