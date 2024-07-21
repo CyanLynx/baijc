@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title></title>
     <style type="text/css">
-        /* 将根元素占满浏览器 */
         html, body {
             margin: 0;
             padding: 0;
@@ -23,8 +22,7 @@
     <script type="text/javascript">
         window.onload = function () {
             var iframeEle = document.getElementsByTagName("iframe");
-            // iframe使用子页面的title
-            iframeEle.contentWindow.document.title;
+            document.title = iframeEle.contentWindow.document.title;
         }
     </script>
 </head>
